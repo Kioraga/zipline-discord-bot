@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  discord-bot:
+    build: .
+    container_name: zipline-discord-bot
+    restart: always
+    environment:
+      - BOT_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      - CLIENT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      - GUILD_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      - ZIPLINE_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      - DOMAIN=example.com
+      - SSL_ENABLED=true
+      - PUBLIC_BOT=false
+      - PRIVATE_UPLOADS=true
+      - PRIVATE_SHORTEN=true
+      - FILE_NAME_FORMAT=random
+      - CHUNKING_ENABLED=true
+      - CHUNK_SIZE_IN_MB=20
+      - FILE_SIZE_LIMIT_IN_MB=100
+    volumes:
+      - .:/app
+    command: node index.js
